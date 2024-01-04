@@ -34,9 +34,9 @@ for (let i = 0; i < usuario.cursos.length; i++) {
 }
 
 //opción 2: usando función y método find
-const buscarFechaCurso = (cursos,nombreCurso) => {
+const buscarCurso = (cursos,nombreCurso) => {
     return cursos.find(curso => curso.nombreCurso === nombreCurso)
 } 
 
-const cursoEncontrado = buscarFechaCurso(usuario.cursos,cursoBuscar);
+const cursoEncontrado = buscarCurso(usuario.cursos,cursoBuscar);
 console.log('Módulo:',cursoEncontrado.nombreCurso,' Fecha de inicio:',cursoEncontrado.fechaInicio);
