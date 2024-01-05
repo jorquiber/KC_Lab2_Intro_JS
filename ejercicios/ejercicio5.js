@@ -21,16 +21,18 @@ duración de todas las canciones en el catálogo. (opcional)
 
 // Función para capitalizar strings: primera letra en mayúscula y resto de letras en minúsculas
 const capitalizarPrimeraLetra = (frase) => {
-    switch(frase.length){
+    let fraseCapitalizada;
+    switch (frase.length) {
         case 0: // caso string vacío
-            return frase;
+            fraseCapitalizada = frase;
             break;
         case 1: // caso 1 sola letra
-            return frase.toUpperCase();
+            fraseCapitalizada = frase.toUpperCase();
             break;
         default: // caso por defecto: 2 o más letras
-            return frase.charAt(0).toUpperCase() + frase.slice(1).toLowerCase();
+            fraseCapitalizada = frase.charAt(0).toUpperCase() + frase.slice(1).toLowerCase();
     }
+    return fraseCapitalizada;
 };
 
 function crearCatalogo() {
@@ -42,7 +44,7 @@ function crearCatalogo() {
         // Si el usuario ha pulsado "Cancelar" en el 1º prompt
         if (nombreCancion === null) {
             console.log("No se ha añadido ninguna canción adicional por decisión del usuario");
-        // Si el usuario ha pulsado "Aceptar" en el 1º prompt    
+            // Si el usuario ha pulsado "Aceptar" en el 1º prompt    
         } else {
             nombreCancion = capitalizarPrimeraLetra(nombreCancion.trim());
             // 2º prompt: solicitar género canción
@@ -50,7 +52,7 @@ function crearCatalogo() {
             // Si el usuario ha pulsado "Cancelar" en el 2º prompt
             if (generoCancion === null) {
                 console.log('No se ha añadido ninguna canción adicional por decisión del usuario');
-            // Si el usuario ha pulsado "Aceptar" en el 2º prompt
+                // Si el usuario ha pulsado "Aceptar" en el 2º prompt
             } else {
                 generoCancion = capitalizarPrimeraLetra(generoCancion.trim());
                 // 3º prompt: solicitar duración de la canción
@@ -58,7 +60,7 @@ function crearCatalogo() {
                 // Si el usuario ha pulsado "Cancelar" en el 3º prompt
                 if (duracionCancion === null) {
                     console.log('No se ha añadido ninguna canción adicional por decisión del usuario');
-                // Si el usuario ha pulsado "Aceptar" en el 3º prompt
+                    // Si el usuario ha pulsado "Aceptar" en el 3º prompt
                 } else {
                     duracionCancion = parseFloat(duracionCancion.trim());
                     if (!isNaN(duracionCancion)) {
@@ -90,7 +92,7 @@ function crearCatalogo() {
     };
 
     const buscarPorGenero = (genero) => {
-        if (typeof(genero) === 'string'){
+        if (typeof (genero) === 'string') {
             const catalogoFiltrado = catalogo.filter(cancion => cancion.genero.toLowerCase() === genero.trim().toLowerCase());
             if (catalogoFiltrado.length === 0) {
                 console.log(`No hay canciones en el catálogo del género "${capitalizarPrimeraLetra(genero)}"`);
@@ -110,10 +112,10 @@ function crearCatalogo() {
         if (catalogo.length === 0) {
             console.log('No hay canciones en el catálogo. No se calcula el promedio');
         } else {
-        const duracionTotal = catalogo.reduce((acum,cancion) => acum += cancion.duracion,0);
-        let promedioDuracion = duracionTotal / catalogo.length;
-        promedioDuracion =  Math.round(promedioDuracion*100)/100; // Redondeo a 2 decimales
-        console.log('Duración promedia de las canciones: ' + promedioDuracion.toString() + ' minutos');
+            const duracionTotal = catalogo.reduce((acum, cancion) => acum += cancion.duracion, 0);
+            let promedioDuracion = duracionTotal / catalogo.length;
+            promedioDuracion = Math.round(promedioDuracion * 100) / 100; // Redondeo a 2 decimales
+            console.log('Duración promedia de las canciones: ' + promedioDuracion.toString() + ' minutos');
         }
     }
 
