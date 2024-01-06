@@ -84,7 +84,7 @@ function createMatch(player1, player2) {
     const getMatchScore = () => {
         const player1Score = currentScore.find(score => score.id === 1);
         const player2Score = currentScore.find(score => score.id === 2);
-        return `${currentScore[0].player} ${currentScore[0].games} ${currentScore[1].player} ${currentScore[1].games}`;
+        return `${player1Score.player} ${player1Score.games} ${player2Score.player} ${player2Score.games}`;
     };
 
     const getWinner = () => {
@@ -108,7 +108,7 @@ function createMatch(player1, player2) {
 
 
 
-
+console.log("-------------------Simulación del partido-------------------");
 // Ejemplo de software
 const game = createMatch('Alberto C', 'David J');
 
