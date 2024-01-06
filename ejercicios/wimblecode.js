@@ -1,5 +1,5 @@
 
-function createMatch(player1, player2) {
+export function createMatch(player1, player2) {
     const currentScore = [{
         id: 1,
         player: player1,
